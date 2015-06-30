@@ -1,0 +1,37 @@
+{
+  "name": "seedit-cycle",
+  "version": "1.0.2",
+  "description": "",
+  "keywords": [
+    "seedit",
+    "cycle"
+  ],
+  "homepage": "",
+  "author": "unclary <wcl58981298@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/unclary/seedit-cycle.git"
+  },
+  "bugs": {
+    "url": ""
+  },
+  "licenses": "MIT",
+  "spm": {
+    "main": "index.js",
+    "dependencies": {
+      "jquery": "1.8.3",
+      "moment": "2.6.0",
+      "eventor": "0.0.3"
+    },
+    "devDependencies": {
+      "expect.js": "0.3.1"
+    }
+  },
+  "devDependencies": {
+    "spm": "3"
+  },
+  "scripts": {
+    "test": "spm test",
+    "build": "spm build"
+  }
+}
