@@ -37,5 +37,11 @@ seajs.use(['index'], function(Cycle){
     document.getElementById("btn-get").onclick = function(){
         cycle.trigger("update");
     };
+    cycle.on("menstrual_start", function(e){
+        console.log("更新姨妈开始日");
+    });
+    cycle.on("menstrual_end", function(e){
+        console.log("更新姨妈结束日");
+    });
 });
 ```

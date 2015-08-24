@@ -8,6 +8,7 @@
 	z-index: 23;
 	transform: translateZ(0) rotate(((statusDegPointer))deg);
 	-webkit-transform: translateZ(0) rotate(((statusDegPointer))deg);
+	pointer-events: none;
 }
 .((classname)) .mask-((sex)):after {
 	position: absolute;
@@ -33,6 +34,7 @@
 	box-shadow: 0px 4px 7px 1px rgba(0, 0, 0, 0.3);
 }
 .((classname)) .mask-((sex))-inner {
+	width: 100%;
 	display: inline-block;
 	vertical-align: middle;
 	font-size: 12px;
@@ -188,4 +190,29 @@
 	height: 100%;
 	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAAsCAMAAAAO9CvbAAAAdVBMVEUAAAD8a5D8a5D8a5D8a5D8a5D8a5D8a5D8a5D8a5D8a5D8a5D8a5D8a5D8a5D8a5D8a5D8a5D8a5D8a5D8a5D8a5D8a5D8a5D8a5D8a5D8a5D8a5D8a5D8a5D8a5D8a5D8a5D8a5D8a5D8a5D8a5D8a5D8a5B6wgeiAAAAJnRSTlMA+kdM91na9emwPDAIzcC3qZyTfnI0FAQm4d/Rx8KGamMqHg4MJ70UX+oAAAEsSURBVEjHndXZkoMgEAXQdFjct6jR7Ov0/3/iVMZJUIw0cB8pT1HcEnplCMuCjK38EgMiQuyHc3wl99sYh3htXfzjwsMm+E7ijssPLp1tjyo/rrga4crR3mGE4e6GNzjOxslu+QTzrbV8tCLCaSLRPgjV9ayp8hC/J8yrhvXdVxmXEpAOyDKeWaYk6ZmOD2ifg465A+Y6Pjrgo47bwNoG7ayxdWBr1wq5aj7YmeaeVmna+moY2bkG6t8yhQFpaU1b+g1xfU+iRRzRWC5iSdrUcOaUnjLLSSgsDFhQ+GzAZ4uy/euWBiztyqbrpss+iZNWt3XZ2fp1zzL7umt1wPeXQtVQm/EFh+yunRph1x0OuRCzNfybaU06rbEZlqlJeytgXz9ny896D8VNX/0FTnubW+H0LlAAAAAASUVORK5CYII=") repeat-x;
 	background-size: auto 100%;
+}
+.((classname)) .btn-menstrual-start {
+	display: inline-block;
+	width: 48%;
+	height: 23px;
+	line-height: 23px;
+	border: 1px solid #0a9dd3;
+	border-radius: 3px;
+	text-align: center;
+	font-size: 12px;
+	color: #0a9dd3;
+}
+.((classname)) .btn-menstrual-end {
+	display: inline-block;
+	width: 48%;
+	height: 25px;
+	line-height: 25px;
+	border-radius: 3px;
+	text-align: center;
+	font-size: 12px;
+	color: #fff;
+	background-color: #f55d4e;
+}
+.((classname)) .cycle-days {
+	margin-bottom: 10px;
 }

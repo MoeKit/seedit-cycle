@@ -8,15 +8,20 @@
 
     var seeditCycle = require("seedit-cycle");
     var cycle = new seeditCycle({
-        sex: "female",
+        sex: "male",
         classname: "cfemale-null",
         radius: 320,
-        token: "55911ec38cf432d7258b458e",
+        token: "55d59c96481b9c8f058b459b",
         enter: "http://baidu.com/12312",
         api: "http://mitao.office.bzdev.net/api/wechat/ring.json"
         //api: "http://huodong.office.bzdev.net/restful/wechat/users.json"
     });
-
+    cycle.on("menstrual_start", function(e){
+        console.log("更新姨妈开始日");
+    });
+    cycle.on("menstrual_end", function(e){
+        console.log("更新姨妈结束日");
+    });
 
 ````
 <div class="cfemale-null"></div>
