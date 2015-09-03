@@ -8,10 +8,10 @@
 
     var seeditCycle = require("seedit-cycle");
     var cycle = new seeditCycle({
-        sex: "male",
+        sex: "female",
         classname: "cfemale-null",
         radius: 320,
-        token: "55d59c96481b9c8f058b459b",
+        token: "55e501c78cf4328a298b45d4",
         enter: "http://baidu.com/12312",
         api: "http://mitao.office.bzdev.net/api/wechat/ring.json"
         //api: "http://huodong.office.bzdev.net/restful/wechat/users.json"

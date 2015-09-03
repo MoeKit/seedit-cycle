@@ -135,24 +135,22 @@ Cycle.prototype.initHtml = function(ring) {
 		default:
 			console.error('阶段状态异常，Error：status is ' + ring.status);
 	}
-	/*by shofan */
-	function getYMD(t){
-		t = new Date(t*1000);
-		t = {
-			year: t.getFullYear(),
-			month: t.getMonth()+1,
-			day: t.getDate(),
-			original: parseInt(t.getTime()/1000,10)
-		};
-		t.stamp = parseInt(new Date(t.year, t.month-1, t.day).getTime()/1000,10);
-		return t;
-	}
-	var today = getYMD(parseInt(new Date().getTime()/1000,10));
-	var come = getYMD(ring.info.come);
-	var end = getYMD(ring.info.end);
-	ring.info.end = null;
-	var menstrualBtn = !ring.info.end ? (today.original < come.stamp ? '': '<a class="btn-menstrual-start" href="javascript:void(0);">更新姨妈开始日</a>') :
-										today.original < come.stamp+24*60*60 ? '' : today.original < end.stamp+14*24*60*60 ? '<a class="btn-menstrual-end" href="javascript:void(0);">更新姨妈结束日</a>' : '<a class="btn-menstrual-start" href="javascript:void(0);">更新姨妈开始日</a>';
+	/*by shofan end */
+
+	var today = _this.__getYMD();
+	var come = _this.__getYMD(ring.info.come);
+	var end = _this.__getYMD(ring.info.end);
+	console.log( ring.info );
+	var menstrualBtn = !ring.info.really ||
+						(!!ring.info.really && today.stamp == come.original)
+						(!!ring.info.really && today.stamp != come.original && !!ring.info.end && today.stamp > come.original+14*24*60*60) ? 
+						'come' : 'end';
+	
+	menstrualBtn = menstrualBtn.replace('come', '<a class="btn-menstrual-start" href="javascript:void(0);">更新姨妈开始日</a>')
+								.replace('end', '<a class="btn-menstrual-end" href="javascript:void(0);">更新姨妈结束日</a>');
+	menstrualBtn = _this.sex == "male" ? '' : menstrualBtn;
+	//var menstrualBtn = !ring.info.end ? (today.original < come.stamp ? '': '<a class="btn-menstrual-start" href="javascript:void(0);">更新姨妈开始日</a>') :
+	//									today.original < come.stamp+24*60*60 ? '' : today.original < end.stamp+14*24*60*60 ? '<a class="btn-menstrual-end" href="javascript:void(0);">更新姨妈结束日</a>' : '<a class="btn-menstrual-start" href="javascript:void(0);">更新姨妈开始日</a>';
 	var cycleAvatar = _this.sex != "male" || !_this.scale ? '' : '<img class="cycle-avatar" src="' + ring.icon + '" onerror="this.src=\'http://scdn.bozhong.com/source/resource/img/noavatar_middle.gif\';" alt="老婆头像" />';
 	var plan_0 = '<span class="clear-float"></span><div class="mask-' + _this.sex + '-inner" >' + cycleAvatar + '<div class="cycle-text">' + cycleText + '</div><div class="cycle-days"><span class="showy percent">' + ring.next + '</span>天</div>'+menstrualBtn+'</div>';
 	var plan_12 = '<span class="clear-float"></span><div class="mask-' + _this.sex + '-inner">' + cycleAvatar + '<div>受孕指数</div><span class="icon-start"><i></i></span>'+menstrualBtn+'</div>';
@@ -247,6 +245,21 @@ Cycle.prototype.initNullCss = function(status) {
 	style.innerHTML = css;
 	document.body.appendChild(style);
 	return this;
+}
+Cycle.prototype.__getYMD = function(timestamp){
+	// t是时间戳
+	var obj = !!timestamp ? new Date(timestamp*1000) : new Date();
+	var obj = {
+		year: obj.getFullYear(),
+		month: obj.getMonth()+1,
+		day: obj.getDate(),
+		original: parseInt(obj.getTime()/1000,10),
+	};
+	obj.ymd = [obj.year, obj.month, obj.day];
+	obj.stamp = parseInt(new Date(obj.year, obj.month-1, obj.day).getTime()/1000,10);
+	obj.firstStamp = parseInt(new Date(obj.year, obj.month-1, 1).getTime()/1000,10);
+	obj.lastStamp = parseInt(new Date(obj.year, obj.month, 0).getTime()/1000,10); 
+	return obj;
 }
 
 function replaceStyle(json, css) {
