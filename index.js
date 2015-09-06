@@ -141,9 +141,9 @@ Cycle.prototype.initHtml = function(ring) {
 	var come = _this.__getYMD(ring.info.come);
 	var end = _this.__getYMD(ring.info.end);
 	console.log( ring.info );
-	var menstrualBtn = !ring.info.really ||
-						(!!ring.info.really && today.stamp == come.original)
-						(!!ring.info.really && today.stamp != come.original && !!ring.info.end && today.stamp > come.original+14*24*60*60) ? 
+	var menstrualBtn = (!ring.info.really ||
+						(!!ring.info.really && today.stamp == come.original) ||
+						(!!ring.info.really && today.stamp != come.original && !!ring.info.end && today.stamp > come.original+14*24*60*60)) ? 
 						'come' : 'end';
 	
 	menstrualBtn = menstrualBtn.replace('come', '<a class="btn-menstrual-start" href="javascript:void(0);">更新姨妈开始日</a>')
